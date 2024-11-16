@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My QR Codes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .qr-list {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+        .qr-item {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #f4f4f9;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .qr-item:last-child {
+            margin-bottom: 0;
+        }
+        .qr-item p {
+            margin: 0;
+            color: #333;
+            font-size: 14px;
+        }
+        .qr-item .counter {
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .qr-item button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .qr-item button:hover {
+            background-color: #0056b3;
+        }
+        .qr-item a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>My QR Codes</h1>
+    <div class="qr-list">
+        {% for qr in qr_codes %}
+        <div class="qr-item">
+            <p><span class="counter">{{ forloop.counter }}.</span> {{ qr.url }}</p>
+            <a href="qr_codes/{{ qr.id }}">
+                <button>View QR Code</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
